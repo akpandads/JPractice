@@ -22,7 +22,7 @@ public class TestFirstNonRepeatedCharachterFinder {
         LocalDateTime startTime = LocalDateTime.now();
         char result = firstNonRepeatedCharachterFinder.getFirstNonRepeatedChar("regular");
         LocalDateTime endTime = LocalDateTime.now();
-        System.out.println("Execution Time :"+ ChronoUnit.NANOS.between(startTime, endTime)+" ns");
+        System.out.println("getFirstNonRepeatedChar Execution Time :"+ ChronoUnit.NANOS.between(startTime, endTime)+" ns");
         System.out.println(result);
 
         Assert.assertEquals('e',result);
@@ -36,7 +36,7 @@ public class TestFirstNonRepeatedCharachterFinder {
         LocalDateTime startTime = LocalDateTime.now();
         char result = firstNonRepeatedCharachterFinder.getFirstNonRepeatedChar("regular");
         LocalDateTime endTime = LocalDateTime.now();
-        System.out.println("Execution Time :"+ ChronoUnit.NANOS.between(startTime, endTime)+" ns");
+        System.out.println("getFirstNonRepeatedChar Execution Time :"+ ChronoUnit.NANOS.between(startTime, endTime)+" ns");
         System.out.println(result);
 
         Assert.assertEquals('e',result);
