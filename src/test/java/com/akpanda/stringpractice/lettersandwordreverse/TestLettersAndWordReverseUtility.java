@@ -32,4 +32,13 @@ public class TestLettersAndWordReverseUtility {
         System.out.println("testReverseSentenceAlongWithWords Execution Time :"+ ChronoUnit.NANOS.between(startTime, endTime)+" ns");
 
     }
+
+    @Test
+    public void testReverseSentenceAlongWithWordsUsingStream(){
+        LocalDateTime startTime = LocalDateTime.now();
+        Assert.assertEquals("i am here", lettersAndWordReverseUtility.reverseSentenceAlongWithWordsUsingStream("ereh ma i"));
+        LocalDateTime endTime = LocalDateTime.now();
+        System.out.println("testReverseSentenceAlongWithWordsUsingStream Execution Time :"+ ChronoUnit.NANOS.between(startTime, endTime)+" ns");
+
+    }
 }

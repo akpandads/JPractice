@@ -1,5 +1,8 @@
 package com.akpanda.stringpractice.lettersandwordreverse;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class LettersAndWordReverseUtility {
     public String reverseWord(String input){
         char[] reversedArray = new char[input.length()];
@@ -18,5 +21,9 @@ public class LettersAndWordReverseUtility {
             reversedStringArray[j--] = this.reverseWord(inputWords[i]);
         }
         return String.join(" ",reversedStringArray);
+    }
+
+    public String reverseSentenceAlongWithWordsUsingStream(String input){
+        return Stream.of(input).map(word -> new StringBuilder(word).reverse()).collect(Collectors.joining(" "));
     }
 }
