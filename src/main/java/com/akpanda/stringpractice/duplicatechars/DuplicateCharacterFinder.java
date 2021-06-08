@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class DuplicateCharacterFinder {
 
+    //generic method of counting charachters
     public Map<Integer, Integer> countCharOccurrence(String input){
         Map<Integer,Integer> charMap = new HashMap<>();
         input.chars().forEach(c-> {
@@ -16,13 +17,24 @@ public class DuplicateCharacterFinder {
         return charMap;
     }
 
-    public Map<String,Integer> filterDuplicates(String input){
+    // not so efficent method of counting charachters
+    public Map<Character,Integer> filterDuplicates(String input){
         Map<Integer,Integer> charMap = this.countCharOccurrence(input);
         Map<Integer,Integer> filteredMap = charMap.entrySet().stream().filter(
                 entry -> entry.getValue()>1)
                 .collect(Collectors.toMap(entry -> entry.getKey(),entry-> entry.getValue()));
-        Map<String,Integer> filteredCharMaps = filteredMap.entrySet().stream()
-                .collect(Collectors.toMap(entry -> String.valueOf(entry.getKey()),entry -> entry.getValue()));
+        Map<Character,Integer> filteredCharMaps = filteredMap.entrySet().stream()
+                .collect(Collectors.toMap(entry -> Character.valueOf((char) entry.getKey().intValue()), entry -> entry.getValue()));
         return filteredCharMaps;
+    }
+
+    public Map<Character,Long> filterDuplicatesUsingStream(String input){
+        Map<Character,Long> charCounterMap = input.chars()
+                .mapToObj(x-> (char) x)
+                .collect(Collectors.groupingBy(c->c, Collectors.counting()));
+        Map<Character, Long> filteredDuplicates = charCounterMap.entrySet().stream()
+                .filter(entry -> entry.getValue()>1)
+                .collect(Collectors.toMap(entry->entry.getKey(),entry-> entry.getValue()));
+        return filteredDuplicates;
     }
 }
